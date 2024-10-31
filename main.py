@@ -9,7 +9,6 @@ score = 0
 questions = []
 answers = {}
 data = {}
-difficulties = {"e": "easy", "m": "medium", "h": "hard"}
 print("Welcome to the True/False General Knowledge Trivia!")
 
 def ask():
@@ -18,8 +17,8 @@ def ask():
     global link
     global data
     amt = int(input("How many questions would you like to be quizzed on? "))
-    difficulty = input("Enter a difficulty:\n[E] Easy\n[M] Medium\n[H] Hard\n-------------\n")
-    link = f"https://opentdb.com/api.php?amount={amt}&category=9&difficulty={difficulties[difficulty.lower()]}&type=boolean"
+    difficulty = input("Enter a difficulty:\n- Easy\n- Medium\n- Hard\n-------------\n")
+    link = f"https://opentdb.com/api.php?amount={amt}&category=9&difficulty={difficulty.lower()}&type=boolean"
     quiz = requests.get(link)
     data = quiz.json()
     if data["response_code"] == 1:
